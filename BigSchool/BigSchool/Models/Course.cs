@@ -9,6 +9,9 @@ namespace BigSchool.Models
     [Table("Course")]
     public partial class Course
     {
+        public bool isLogin = false;
+        public bool isShowGoing = false;
+        public bool isShowFollow = false;
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Course()
         {

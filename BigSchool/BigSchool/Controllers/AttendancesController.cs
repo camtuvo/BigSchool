@@ -18,7 +18,10 @@ namespace BigSchool.Controllers
             DatabaseContext cx = new DatabaseContext();
             if( cx.Attendances.Any(p=> p.Attendee== userID && p.CourseId== attendanceDto.Id))
             {
-                return BadRequest("The attendance already exists!");
+                //return BadRequest("The attendance already exists!");
+                cx.Attendances.Remove(cx.Attendances.SingleOrDefault(p => p.Attendee == userID && p.CourseId == attendanceDto.Id));
+                cx.SaveChanges();
+                return Ok("cancel");
             }
             var attendance = new Attendance() { CourseId = attendanceDto.Id, Attendee = User.Identity.GetUserId() };
             cx.Attendances.Add(attendance);
